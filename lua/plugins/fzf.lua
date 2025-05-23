@@ -7,6 +7,13 @@ return {
   opts = {},
   keys = {
     {
+      "<leader>fb", 
+      function () 
+        require('fzf-lua').builtin()
+      end,
+      desc = "Find files in current working directory"
+    },
+    {
       "<leader>ff", 
       function () 
         require('fzf-lua').files()
@@ -21,7 +28,7 @@ return {
       desc = "Find by grepping current working directory"
     },
     {
-      "<leader>fb", 
+      "<leader><leader>", 
       function () 
         require('fzf-lua').buffers()
       end,
@@ -54,6 +61,20 @@ return {
         require('fzf-lua').lgrep_curbuf()
       end,
       desc = "Find in current buffer"
+    },
+    {
+      "<leader>fh", 
+      function () 
+        require('fzf-lua').helptags()
+      end,
+      desc = "Find in help"
+    },
+    {
+      "<leader>fk", 
+      function () 
+        require('fzf-lua').keymaps()
+      end,
+      desc = "Find in keymaps"
     }
   }
 }
