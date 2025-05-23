@@ -19,14 +19,3 @@ vim.keymap.set("n", "<leader>ql", function() require("persistence").load({ last 
 
 -- stop Persistence => session won't be saved on exit
 vim.keymap.set("n", "<leader>qd", function() require("persistence").stop() end, {desc = "stop Persistence => session won't be saved on exit"})
-
-
-vim.keymap.set(
-  'n', 
-  'grk',
-  function () 
-    vim.diagnostic.open_float()
-  end
-)
-
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Show hover documentation' })
