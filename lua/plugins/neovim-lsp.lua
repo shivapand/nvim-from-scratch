@@ -1,4 +1,3 @@
-
 return {
   -- Main LSP Configuration
   'neovim/nvim-lspconfig',
@@ -11,7 +10,7 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim',    opts = {} },
 
     -- Allows extra capabilities provided by blink.cmp
     -- 'saghen/blink.cmp',
@@ -155,7 +154,7 @@ return {
     vim.diagnostic.config {
       severity_sort = true,
       float = { border = 'rounded', source = 'if_many' },
-      underline = { severity = vim.diagnostic.severity.ERROR },
+      -- underline = { severity = vim.diagnostic.severity.ERROR },
       signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = '󰅚 ',
@@ -177,6 +176,7 @@ return {
       --     return diagnostic_message[diagnostic.severity]
       --   end,
       -- },
+      update_in_insert = true,
       virtual_text = false
     }
 
@@ -260,4 +260,3 @@ return {
     }
   end,
 }
-
