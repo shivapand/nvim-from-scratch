@@ -47,3 +47,4 @@ vim.opt.scrolloff = 5
 
 vim.opt.clipboard="unnamedplus"
 
+vim.g.root_spec = { "cwd" }
