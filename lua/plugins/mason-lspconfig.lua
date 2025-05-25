@@ -20,14 +20,11 @@ return {
         },
         update_in_insert = true,
         virtual_text = false
-      })
-    })
-
-    local capabilities = require('blink.cmp').get_lsp_capabilities()
-
-    require('mason-lspconfig').setup {
+      }),
       handlers = {
         function(server_name)
+          local capabilities = require('blink.cmp').get_lsp_capabilities()
+
           local server = servers[server_name] or {}
 
           server.capabilities = vim.tbl_deep_extend(
@@ -37,7 +34,8 @@ return {
           require('lspconfig')[server_name].setup(server)
         end,
       },
-    }
+
+    })
 
     local ensure_installed = vim.tbl_keys(servers or {})
 
@@ -46,6 +44,7 @@ return {
       'eslint-lsp',
       'typescript-language-server',
       'prettier',
+      'emmet-language-server',
       'stylelint-lsp'
     })
 
