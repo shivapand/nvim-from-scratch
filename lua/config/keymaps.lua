@@ -44,7 +44,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     map('gi', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
 
-    map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
+    map('gd', function()
+      vim.lsp.buf.definition({
+        on_list = function(options)
+          if #options.items > 1 then
+            vim.notify("Multiple items found, opening first one", vim.log.levels.WARN)
+          end
+
+          local item = options.items[1]
+          vim.cmd("tabe +" .. item.lnum .. " " .. item.filename .. "|" .. "normal " .. item.col .. "|")
+        end,
+      })
+    end, '[G]oto [D]efinition')
 
     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
