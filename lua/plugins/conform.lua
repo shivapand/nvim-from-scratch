@@ -4,7 +4,7 @@ return {
     formatters_by_ft = {
       javascript = { "prettier" },
       typescript = { "prettier" },
-      json = { "prettier" },
+      json = { "json" },
       scss = { "stylelint" },
     },
   },
