@@ -3,6 +3,7 @@ return {
   dependencies = {
     { "mason-org/mason.nvim", opts = {} },
     "neovim/nvim-lspconfig",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
     require('mason-lspconfig').setup({
@@ -29,11 +30,25 @@ return {
         function(server_name)
           local server = servers[server_name] or {}
 
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+          server.capabilities = vim.tbl_deep_extend(
+            'force', {}, capabilities, server.capabilities or {}
+          )
 
           require('lspconfig')[server_name].setup(server)
         end,
       },
     }
+
+    local ensure_installed = vim.tbl_keys(servers or {})
+
+    vim.list_extend(ensure_installed, {
+      'lua-language-server',
+      'eslint-lsp',
+      'typescript-language-server',
+      'prettier',
+      'stylelint-lsp'
+    })
+
+    require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
   end
 }
