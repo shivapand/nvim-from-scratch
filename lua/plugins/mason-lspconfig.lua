@@ -23,7 +23,9 @@ return {
       }),
       handlers = {
         function(server_name)
-          local capabilities = require('blink.cmp').get_lsp_capabilities()
+          local capabilities = require('blink.cmp').get_lsp_capabilities(
+            vim.lsp.protocol.make_client_capabilities()
+          )
 
           local server = servers[server_name] or {}
 
