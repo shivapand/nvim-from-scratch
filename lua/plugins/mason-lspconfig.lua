@@ -6,7 +6,7 @@ return {
   },
   config = function()
     require('mason-lspconfig').setup({
-      vim.diagnostic.config {
+      vim.diagnostic.config({
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
         signs = {
@@ -19,7 +19,21 @@ return {
         },
         update_in_insert = true,
         virtual_text = false
-      },
+      })
     })
+
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+    require('mason-lspconfig').setup {
+      handlers = {
+        function(server_name)
+          local server = servers[server_name] or {}
+
+          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+
+          require('lspconfig')[server_name].setup(server)
+        end,
+      },
+    }
   end
 }
