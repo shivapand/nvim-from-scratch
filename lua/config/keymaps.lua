@@ -7,7 +7,7 @@ vim.keymap.set("n", "<Leader>/", ":noh<CR>", { desc = "Clean search highlight" }
 vim.keymap.set("n", "<Leader>j", ":execute 'tabmove' tabpagenr() - 2<CR>", { desc = "Move tab prev" })
 vim.keymap.set("n", "<Leader>k", ":execute 'tabmove' tabpagenr() + 1<CR>", { desc = "Move tab next" })
 
-vim.keymap.set("n", "<S-g>", ':call system("xclip -i -selection clipboard", expand("%:p"))<CR>',
+vim.keymap.set("n", "<leader>g", ':call system("xclip -i -selection clipboard", expand("%:p"))<CR>',
   { desc = "Copy file path" })
 
 
